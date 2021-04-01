@@ -28,3 +28,5 @@ struct UserModel: Decodable {
     let eventsUrl: String
     let siteAdmin: Bool
 }
+
+extension UserModel: Equatable {}

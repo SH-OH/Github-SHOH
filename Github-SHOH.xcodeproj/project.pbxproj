@@ -31,6 +31,11 @@
 		CB6CAE58261613E4009A8B24 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6CAE57261613E4009A8B24 /* UserModel.swift */; };
 		CB6CAE6C261634E9009A8B24 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6CAE6B261634E9009A8B24 /* URL+Extensions.swift */; };
 		CBF10AE426163E2F008999C4 /* APIErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF10AE326163E2F008999C4 /* APIErrorModel.swift */; };
+		CBF10AED26164303008999C4 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF10AEC26164303008999C4 /* SearchCell.swift */; };
+		CBF10AF226164C98008999C4 /* SearchCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF10AF126164C98008999C4 /* SearchCellReactor.swift */; };
+		CBF10AF726164DA4008999C4 /* Reactive+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF10AF626164DA4008999C4 /* Reactive+Extensions.swift */; };
+		CBF10AFF26164EA4008999C4 /* ObservableType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF10AFE26164EA4008999C4 /* ObservableType+Extensions.swift */; };
+		CBF10B052616507F008999C4 /* SearchSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF10B042616507F008999C4 /* SearchSection.swift */; };
 		D93163F46226056CBBE49820 /* Pods_Github_SHOHTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DBFAE4D94E73534DAA34359 /* Pods_Github_SHOHTests.framework */; };
 		F9872A4D8D3321FBC66FC230 /* Pods_Github_SHOHUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BCCD5D69B84E82EC7BB178C /* Pods_Github_SHOHUITests.framework */; };
 /* End PBXBuildFile section */
@@ -89,6 +94,11 @@
 		CB6CAE57261613E4009A8B24 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		CB6CAE6B261634E9009A8B24 /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
 		CBF10AE326163E2F008999C4 /* APIErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIErrorModel.swift; sourceTree = "<group>"; };
+		CBF10AEC26164303008999C4 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
+		CBF10AF126164C98008999C4 /* SearchCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCellReactor.swift; sourceTree = "<group>"; };
+		CBF10AF626164DA4008999C4 /* Reactive+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+Extensions.swift"; sourceTree = "<group>"; };
+		CBF10AFE26164EA4008999C4 /* ObservableType+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+Extensions.swift"; sourceTree = "<group>"; };
+		CBF10B042616507F008999C4 /* SearchSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSection.swift; sourceTree = "<group>"; };
 		D238688872C21BA6750194D7 /* Pods-Github-SHOHUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Github-SHOHUITests.release.xcconfig"; path = "Target Support Files/Pods-Github-SHOHUITests/Pods-Github-SHOHUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D2BDEABC5D10EF810CF41E16 /* Pods-Github-SHOHTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Github-SHOHTests.debug.xcconfig"; path = "Target Support Files/Pods-Github-SHOHTests/Pods-Github-SHOHTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -267,8 +277,10 @@
 			children = (
 				CB6CAE10261608CA009A8B24 /* SearchViewController.storyboard */,
 				CB6CAE06261608B8009A8B24 /* SearchCoordinator.swift */,
+				CBF10B042616507F008999C4 /* SearchSection.swift */,
 				CB6CAE01261608AD009A8B24 /* SearchViewController.swift */,
 				CB6CAE0B261608C0009A8B24 /* SearchViewReactor.swift */,
+				CBF10AEB261642F8008999C4 /* Cells */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -329,9 +341,20 @@
 		CB6CAE6A261634DC009A8B24 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				CBF10AF626164DA4008999C4 /* Reactive+Extensions.swift */,
+				CBF10AFE26164EA4008999C4 /* ObservableType+Extensions.swift */,
 				CB6CAE6B261634E9009A8B24 /* URL+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CBF10AEB261642F8008999C4 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				CBF10AEC26164303008999C4 /* SearchCell.swift */,
+				CBF10AF126164C98008999C4 /* SearchCellReactor.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -597,6 +620,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB6CAE4126161144009A8B24 /* SearchService.swift in Sources */,
+				CBF10B052616507F008999C4 /* SearchSection.swift in Sources */,
 				CB6CADD2261604AB009A8B24 /* AppCoordinator.swift in Sources */,
 				CB6CAE02261608AD009A8B24 /* SearchViewController.swift in Sources */,
 				CBF10AE426163E2F008999C4 /* APIErrorModel.swift in Sources */,
@@ -604,12 +628,16 @@
 				CB6CAE4A261612DC009A8B24 /* SearchUseCase.swift in Sources */,
 				CB6CAE07261608B8009A8B24 /* SearchCoordinator.swift in Sources */,
 				CB6CAE2326160E3D009A8B24 /* BaseProviderProtocol.swift in Sources */,
+				CBF10AF226164C98008999C4 /* SearchCellReactor.swift in Sources */,
 				CB6CAE16261608FC009A8B24 /* BaseViewController.swift in Sources */,
 				CB6CADDC261604D8009A8B24 /* Coordinator.swift in Sources */,
 				CB56A9862615B4B000CDB6DE /* AppDelegate.swift in Sources */,
 				CB56A9882615B4B000CDB6DE /* SceneDelegate.swift in Sources */,
 				CB6CAE0C261608C0009A8B24 /* SearchViewReactor.swift in Sources */,
+				CBF10AF726164DA4008999C4 /* Reactive+Extensions.swift in Sources */,
+				CBF10AED26164303008999C4 /* SearchCell.swift in Sources */,
 				CB6CAE53261613A5009A8B24 /* SearchUsersModel.swift in Sources */,
+				CBF10AFF26164EA4008999C4 /* ObservableType+Extensions.swift in Sources */,
 				CB6CAE6C261634E9009A8B24 /* URL+Extensions.swift in Sources */,
 				CB6CAE58261613E4009A8B24 /* UserModel.swift in Sources */,
 				CB6CAE3626160FB4009A8B24 /* BaseService.swift in Sources */,

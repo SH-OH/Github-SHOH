@@ -8,12 +8,12 @@
 import UIKit
 import ReactorKit
 import RxCocoa
+import RxDataSources
 
 final class SearchViewController: BaseViewController {
     
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var collectionView: UICollectionView!
-    
     
 }
 
@@ -22,6 +22,7 @@ final class SearchViewController: BaseViewController {
 extension SearchViewController: StoryboardView {
     func bind(reactor: SearchViewReactor) {
         bindSearchBar(reactor)
+        bindCV(reactor)
     }
     
     private func bindSearchBar(_ reactor: SearchViewReactor) {
@@ -33,13 +34,36 @@ extension SearchViewController: StoryboardView {
             .disposed(by: disposeBag)
         
         reactor.state.map { $0.userList }
-            .bind { (list) in
-                print("list.count : \(list.count)")
-            }.disposed(by: disposeBag)
+            .distinctUntilChanged()
+            .observe(on: ConcurrentDispatchQueueScheduler(qos: .utility))
+            .map { Reactor.Action.updatedUserList($0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
         
         reactor.state.map { $0.nextPage }
             .bind { (nextPage) in
                 print("nextPage : \(nextPage)")
             }.disposed(by: disposeBag)
+    }
+    
+    private func bindCV(_ reactor: SearchViewReactor) {
+        reactor.state.map { $0.sections }
+            .bind(to: collectionView.rx.items(dataSource: self.dataSource()))
+            .disposed(by: disposeBag)
+    }
+}
+
+// MARK: - DataSource
+
+extension SearchViewController {
+    private func dataSource() -> RxCollectionViewSectionedReloadDataSource<SearchSection> {
+        return .init { (_, cv, ip, item) -> UICollectionViewCell in
+            switch item {
+            case .user(let reactor):
+                let cell = cv.dequeue(SearchCell.self, for: ip)
+                cell.reactor = reactor
+                return cell
+            }
+        }
     }
 }

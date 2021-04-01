@@ -10,14 +10,17 @@ import ReactorKit
 final class SearchViewReactor: Reactor {
     enum Action {
         case enteredSearchText(String?)
+        case updatedUserList([UserModel])
     }
     
     enum Mutation {
         case updateUserList(([UserModel], Int))
+        case updateSections([SearchSection])
     }
     
     struct State {
         var userList: [UserModel]
+        var sections: [SearchSection]
         var nextPage: Int
     }
     
@@ -27,6 +30,7 @@ final class SearchViewReactor: Reactor {
     init(_ useCase: SearchUseCase) {
         self.initialState = .init(
             userList: [],
+            sections: [],
             nextPage: 1
         )
         self.useCase = useCase
@@ -42,6 +46,17 @@ final class SearchViewReactor: Reactor {
                 )
                 .map { Mutation.updateUserList(($0.model.items, $0.nextPage)) }
             return fetchList
+        case let .updatedUserList(userList):
+            let updateSections: Observable<Mutation> = Observable.just(userList)
+                .flatMapLatest({ (_userList) -> Observable<[SearchSectionItem]> in
+                    return Observable.from(_userList)
+                    .map { SearchSectionItem.user(SearchCellReactor($0)) }
+                    .toArray()
+                    .asObservable()
+                })
+                .map { SearchSection.section(items: $0) }
+                .map { Mutation.updateSections([$0]) }
+            return updateSections
         }
     }
     
@@ -51,6 +66,8 @@ final class SearchViewReactor: Reactor {
         case let .updateUserList((userList, nextPage)):
             newState.userList = userList
             newState.nextPage = nextPage
+        case let .updateSections(sections):
+            newState.sections = sections
         }
         return newState
     }
