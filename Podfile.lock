@@ -1,0 +1,89 @@
+PODS:
+  - Alamofire (5.4.1)
+  - Differentiator (5.0.0)
+  - Kingfisher (6.2.1)
+  - Moya/Core (15.0.0-alpha.1):
+    - Alamofire (~> 5.0)
+  - Moya/RxSwift (15.0.0-alpha.1):
+    - Moya/Core
+    - RxSwift (~> 6.0)
+  - ReactorKit (3.0.0):
+    - RxSwift (~> 6.0)
+    - WeakMapTable (~> 1.1)
+  - RxCocoa (6.1.0):
+    - RxRelay (= 6.1.0)
+    - RxSwift (= 6.1.0)
+  - RxDataSources (5.0.0):
+    - Differentiator (~> 5.0)
+    - RxCocoa (~> 6.0)
+    - RxSwift (~> 6.0)
+  - RxExpect (2.0.0):
+    - RxCocoa (~> 6.1)
+    - RxSwift (~> 6.1)
+    - RxTest (~> 6.1)
+  - RxRelay (6.1.0):
+    - RxSwift (= 6.1.0)
+  - RxSwift (6.1.0)
+  - RxTest (6.1.0):
+    - RxSwift (= 6.1.0)
+  - Then (2.7.0)
+  - WeakMapTable (1.2.0)
+
+DEPENDENCIES:
+  - Kingfisher
+  - Moya/RxSwift (from `https://github.com/Moya/Moya.git`, branch `development`)
+  - ReactorKit (~> 3.0)
+  - RxCocoa (~> 6.1.0)
+  - RxDataSources (~> 5.0)
+  - RxExpect (from `https://github.com/SH-OH/RxExpect.git`, branch `develop`)
+  - RxSwift (~> 6.1.0)
+  - Then
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - Differentiator
+    - Kingfisher
+    - ReactorKit
+    - RxCocoa
+    - RxDataSources
+    - RxRelay
+    - RxSwift
+    - RxTest
+    - Then
+    - WeakMapTable
+
+EXTERNAL SOURCES:
+  Moya:
+    :branch: development
+    :git: https://github.com/Moya/Moya.git
+  RxExpect:
+    :branch: develop
+    :git: https://github.com/SH-OH/RxExpect.git
+
+CHECKOUT OPTIONS:
+  Moya:
+    :commit: e84f8a2c28874e8b50bd9db5571d094ae72a0216
+    :git: https://github.com/Moya/Moya.git
+  RxExpect:
+    :commit: 093260c400751e3cbae9e3a6186b930e183f9dc4
+    :git: https://github.com/SH-OH/RxExpect.git
+
+SPEC CHECKSUMS:
+  Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
+  Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
+  Kingfisher: e71c6fac2aebb1262888cabc2cb13d313362a48f
+  Moya: 1a04c3836ce1cd20430c176d1318436cbd1371a1
+  ReactorKit: 5348c9881dcb546605b451e32759dccc9937d36e
+  RxCocoa: 5c51f02d562cbd94629f6c26cf0c80fe4ab8d343
+  RxDataSources: aa47cc1ed6c500fa0dfecac5c979b723542d79cf
+  RxExpect: 0a0e5a8c5bbd042d892a4bc653f3484395605886
+  RxRelay: 483e1a19fad961b41f0b0c0bee506f46c1ae14fe
+  RxSwift: a834e5c538e89eca0cae86f403f4fbf0336786ce
+  RxTest: 9d26616eaff4a7e75f4ecae9b2c24840f2e8218d
+  Then: acfe0be7e98221c6204e12f8161459606d5d822d
+  WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
+
+PODFILE CHECKSUM: 269d502566d5eb9c1def1b9be17fe326557d83e8
+
+COCOAPODS: 1.10.1

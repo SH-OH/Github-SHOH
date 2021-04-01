@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "SPMSHOHProxy",
+        "repositoryURL": "https://github.com/SH-OH/SPMSHOHProxy.git",
+        "state": {
+          "branch": null,
+          "revision": "a6e0e4881460c807b9388e3d079d1e3dece19c6f",
+          "version": "1.0.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
