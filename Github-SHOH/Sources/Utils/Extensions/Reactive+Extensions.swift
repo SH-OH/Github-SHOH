@@ -26,3 +26,17 @@ extension Reactive where Base: UIImageView {
         }
     }
 }
+
+extension Reactive where Base: UICollectionView {
+    var isScrollToBottom: Observable<Void> {
+        return contentOffset
+            .flatMapLatest { (offset) -> Observable<Void> in
+                let contentHeight = base.contentSize.height
+                let height = base.frame.height
+                if offset.y > (contentHeight - height) {
+                    return .just(())
+                }
+                return .empty()
+            }
+    }
+}

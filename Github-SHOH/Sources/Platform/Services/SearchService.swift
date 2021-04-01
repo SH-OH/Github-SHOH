@@ -8,10 +8,19 @@
 import Moya
 
 enum SearchService {
+    enum SortType: String {
+        case followers, repositories, joined
+    }
+    
+    enum OrderType: String {
+        case asc, desc
+    }
+    
     case searchUsers(
             query: String,
             perPage: Int,
-            page: Int
+            page: Int,
+            sort: SortType?
          )
 }
 
@@ -33,10 +42,11 @@ extension SearchService: BaseService, TargetType {
     var task: Task {
         var params: [String: Any] = [:]
         switch self {
-        case let .searchUsers(query, perPage, page):
+        case let .searchUsers(query, perPage, page, sort):
             params["q"] = query
             params["per_page"] = perPage
             params["page"] = page
+            params["sort"] = sort?.rawValue
         }
         return .requestParameters(
             parameters: params,

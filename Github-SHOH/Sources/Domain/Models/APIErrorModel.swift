@@ -9,7 +9,7 @@ import Foundation
 
 struct APIErrorModel: Decodable, Error {
     let message: String
-    let errors: [APIError]
+    let errors: [APIError]?
     let documentationUrl: String
 }
 

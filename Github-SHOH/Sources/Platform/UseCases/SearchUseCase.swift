@@ -11,6 +11,7 @@ import Moya
 final class SearchUseCase: BaseProviderProtocol {
     
     var provider: MoyaProvider<SearchService>
+    var currentKeyword: String?
     
     init(isStub: Bool = false) {
         self.provider = Self.initProvider(isStub)
@@ -18,9 +19,13 @@ final class SearchUseCase: BaseProviderProtocol {
     
     func fetchSearchUsers(
         query: String?,
+        page: Int,
         perPage: Int = 20,
-        page: Int
+        sort: SearchService.SortType = .joined
     ) -> Observable<(model: SearchUsersModel, nextPage: Int)> {
+        
+        self.currentKeyword = query
+        
         guard let query = query, !query.isEmpty else {
             return .just((SearchUsersModel.defaultValue, 1))
         }
@@ -30,7 +35,8 @@ final class SearchUseCase: BaseProviderProtocol {
             target: .searchUsers(
                 query: query,
                 perPage: perPage,
-                page: page
+                page: page,
+                sort: sort
             )
         )
         .asObservable()

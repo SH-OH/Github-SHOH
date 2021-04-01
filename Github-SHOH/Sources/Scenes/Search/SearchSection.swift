@@ -30,3 +30,22 @@ extension SearchSection: SectionModelType {
         }
     }
 }
+
+extension SearchSection: Hashable {
+    static func == (lhs: SearchSection, rhs: SearchSection) -> Bool {
+        return lhs.hashValue == rhs.hashValue
+    }
+}
+
+extension SearchSectionItem: Hashable {
+    static func == (lhs: SearchSectionItem, rhs: SearchSectionItem) -> Bool {
+        return lhs.hashValue == rhs.hashValue
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        switch self {
+        case .user(let reactor):
+            hasher.combine(reactor.currentState.loginId)
+        }
+    }
+}

@@ -35,19 +35,31 @@ extension SearchViewController: StoryboardView {
         
         reactor.state.map { $0.userList }
             .distinctUntilChanged()
-            .observe(on: ConcurrentDispatchQueueScheduler(qos: .utility))
+            .observe(on: MainScheduler.asyncInstance)
             .map { Reactor.Action.updatedUserList($0) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
-        
-        reactor.state.map { $0.nextPage }
-            .bind { (nextPage) in
-                print("nextPage : \(nextPage)")
-            }.disposed(by: disposeBag)
     }
     
     private func bindCV(_ reactor: SearchViewReactor) {
+        collectionView.rx.willDisplayCell
+            .map { $0.at }
+            .distinctUntilChanged()
+            .observe(on: MainScheduler.asyncInstance)
+            .withLatestFrom(
+                reactor.state.map { $0.userList },
+                resultSelector: { ($0.item, $1.count-5) } )
+            .filter { $0 == $1 }
+            .withLatestFrom(
+                reactor.state.map { ($0.nextPage) }
+            )
+            .distinctUntilChanged(SearchViewReactor.Page.distinctWithFailure(_:_:))
+            .map { Reactor.Action.didPrefetchNextPage($0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
         reactor.state.map { $0.sections }
+            .distinctUntilChanged()
             .bind(to: collectionView.rx.items(dataSource: self.dataSource()))
             .disposed(by: disposeBag)
     }
