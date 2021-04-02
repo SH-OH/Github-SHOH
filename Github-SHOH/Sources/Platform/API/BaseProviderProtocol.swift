@@ -19,11 +19,21 @@ protocol BaseProviderProtocol: class {
 }
 
 extension BaseProviderProtocol {
-    static func initProvider(_ isStub: Bool) -> MoyaProvider<Target> {
+    static func initProvider(
+        _ isStub: Bool,
+        useCache: Bool = false
+    ) -> MoyaProvider<Target> {
+        var plugins: [PluginType] = []
+        if useCache {
+            plugins.append(CachePolicyPlugin())
+        }
         if !isStub {
-            return MoyaProvider<Target>()
+            return MoyaProvider<Target>(plugins: plugins)
         } else {
-            return MoyaProvider<Target>(stubClosure: MoyaProvider.immediatelyStub)
+            return MoyaProvider<Target>(
+                stubClosure: MoyaProvider.immediatelyStub,
+                plugins: plugins
+            )
         }
     }
     

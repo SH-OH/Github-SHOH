@@ -42,21 +42,25 @@ final class SearchViewReactor: Reactor {
     }
     
     let initialState: State
-    private let useCase: SearchUseCase
     
-    init(_ useCase: SearchUseCase) {
+    private let searchUseCase: SearchUseCase
+    private let usersUseCase: UsersUseCase
+    
+    init(searchUseCase: SearchUseCase,
+         usersUseCase: UsersUseCase) {
         self.initialState = .init(
             userList: [],
             sections: [],
             nextPage: Page(nextPage: 1, isFail: false)
         )
-        self.useCase = useCase
+        self.searchUseCase = searchUseCase
+        self.usersUseCase = usersUseCase
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case let .enteredSearchText(enteredKeyword):
-            let fetchList = self.useCase
+            let fetchList = self.searchUseCase
                 .fetchSearchUsers(
                     query: enteredKeyword,
                     page: 1
@@ -67,9 +71,13 @@ final class SearchViewReactor: Reactor {
             return fetchList
         case let .updatedUserList(userList):
             let updateSections: Observable<Mutation> = Observable.just(userList)
-                .flatMapLatest({ (_userList) -> Observable<[SearchSectionItem]> in
+                .flatMapLatest({ [weak usersUseCase] (_userList) -> Observable<[SearchSectionItem]> in
                     return Observable.from(_userList)
-                        .map { SearchSectionItem.user(SearchCellReactor($0)) }
+                        .compactMap { [weak usersUseCase] in
+                            guard let usersUseCase = usersUseCase else { return nil }
+                            return SearchCellReactor($0, usersUseCase: usersUseCase)
+                        }
+                        .map { SearchSectionItem.user($0) }
                         .toArray()
                         .asObservable()
                 })
@@ -80,9 +88,9 @@ final class SearchViewReactor: Reactor {
         case var .didPrefetchNextPage(nextPage):
             var updatedNextPage = nextPage.updateIsFail(false)
             
-            let prefetchList = self.useCase
+            let prefetchList = self.searchUseCase
                 .fetchSearchUsers(
-                    query: self.useCase.currentKeyword,
+                    query: self.searchUseCase.currentKeyword,
                     page: updatedNextPage.nextPage
                 )
                 .map { ($0.model.items, updatedNextPage.updateNextPage($0.nextPage)) }

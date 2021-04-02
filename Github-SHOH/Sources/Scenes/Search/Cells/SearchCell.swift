@@ -10,6 +10,10 @@ import ReactorKit
 
 final class SearchCell: UICollectionViewCell {
     
+    private struct Constants {
+        static let numberOfReposText: String = "Number of repos: "
+    }
+    
     var disposeBag: DisposeBag = .init()
     
     @IBOutlet private weak var avatarImageView: UIImageView!
@@ -32,6 +36,25 @@ extension SearchCell: StoryboardView {
             .distinctUntilChanged()
             .asDriverOnEmpty()
             .drive(loginLabel.rx.text)
-            .disposed(by: disposeBag)   
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.loginId }
+            .distinctUntilChanged()
+            .map { Reactor.Action.didFetchGetUser($0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.numberOfRepos }
+            .distinctUntilChanged()
+            .map({ (number) -> String in
+                if let number = number {
+                    return String(number)
+                }
+                return "-"
+            })
+            .map { Constants.numberOfReposText + $0 }
+            .bind(to: numberOfReposLabel.rx.text)
+            .disposed(by: disposeBag)
+            
     }
 }

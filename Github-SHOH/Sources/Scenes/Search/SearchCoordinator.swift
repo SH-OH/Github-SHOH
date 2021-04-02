@@ -17,8 +17,12 @@ final class SearchCoordinator: Coordinator {
     
     func start() {
         let searchVC = SearchViewController.storyboard()
-        let useCase: SearchUseCase = .init()
-        searchVC.reactor = SearchViewReactor(useCase)
+        let searchUseCase: SearchUseCase = .init()
+        let usersUseCase: UsersUseCase = .init()
+        searchVC.reactor = SearchViewReactor(
+            searchUseCase: searchUseCase,
+            usersUseCase: usersUseCase
+        )
         navigationController?.pushViewController(
             searchVC,
             animated: false
