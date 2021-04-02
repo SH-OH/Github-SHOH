@@ -53,4 +53,11 @@ extension SearchService: BaseService, TargetType {
             encoding: URLEncoding.default
         )
     }
+    
+    var sampleData: Data {
+        switch self {
+        case .searchUsers(_, _, let page, _):
+            return Self.getSampleData("SearchUsers_\(page)")
+        }
+    }
 }

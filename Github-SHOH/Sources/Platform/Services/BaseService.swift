@@ -30,7 +30,7 @@ extension BaseService {
         return headers
     }
     
-    func getSampleData(_ resource: String) -> Data {
+    static func getSampleData(_ resource: String) -> Data {
         guard let url = Bundle.main.url(forResource: resource, withExtension: "json") else {
             return Data()
         }

@@ -27,7 +27,7 @@ final class SearchViewReactor: Reactor {
     enum Action {
         case enteredSearchText(String?)
         case updatedUserList([UserModel])
-        case didPrefetchNextPage(Page)
+        case didLoadNextPage(Page)
     }
     
     enum Mutation {
@@ -60,7 +60,7 @@ final class SearchViewReactor: Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case let .enteredSearchText(enteredKeyword):
-            let fetchList = self.searchUseCase
+            let updateUserList = self.searchUseCase
                 .fetchSearchUsers(
                     query: enteredKeyword,
                     page: 1
@@ -68,15 +68,13 @@ final class SearchViewReactor: Reactor {
                 .map { ($0.model.items, Page(nextPage: $0.nextPage, isFail: false)) }
                 .map { Mutation.updateUserList(($0.0, $0.1, true)) }
             
-            return fetchList
+            return updateUserList
         case let .updatedUserList(userList):
             let updateSections: Observable<Mutation> = Observable.just(userList)
-                .flatMapLatest({ [weak usersUseCase] (_userList) -> Observable<[SearchSectionItem]> in
+                .withUnretained(self.usersUseCase, resultSelector: { ($0, $1) })
+                .flatMapLatest({ (usersUseCase, _userList) -> Observable<[SearchSectionItem]> in
                     return Observable.from(_userList)
-                        .compactMap { [weak usersUseCase] in
-                            guard let usersUseCase = usersUseCase else { return nil }
-                            return SearchCellReactor($0, usersUseCase: usersUseCase)
-                        }
+                        .map { SearchCellReactor($0, usersUseCase: usersUseCase)}
                         .map { SearchSectionItem.user($0) }
                         .toArray()
                         .asObservable()
@@ -85,10 +83,10 @@ final class SearchViewReactor: Reactor {
                 .map { Mutation.updateSections([$0]) }
             
             return updateSections
-        case var .didPrefetchNextPage(nextPage):
+        case var .didLoadNextPage(nextPage):
             var updatedNextPage = nextPage.updateIsFail(false)
             
-            let prefetchList = self.searchUseCase
+            let updateUserList = self.searchUseCase
                 .fetchSearchUsers(
                     query: self.searchUseCase.currentKeyword,
                     page: updatedNextPage.nextPage
@@ -101,7 +99,7 @@ final class SearchViewReactor: Reactor {
                     )
                 )
             
-            return prefetchList
+            return updateUserList
         }
     }
     

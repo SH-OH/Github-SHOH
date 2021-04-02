@@ -9,6 +9,7 @@ import UIKit
 import ReactorKit
 import RxCocoa
 import RxDataSources
+import SPMSHOHProxy
 
 final class SearchViewController: BaseViewController {
     
@@ -54,9 +55,15 @@ extension SearchViewController: StoryboardView {
                 reactor.state.map { ($0.nextPage) }
             )
             .distinctUntilChanged(SearchViewReactor.Page.distinctWithFailure(_:_:))
-            .map { Reactor.Action.didPrefetchNextPage($0) }
+            .map { Reactor.Action.didLoadNextPage($0) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
+        
+        collectionView.rx.didEndDisplayingCell
+            .compactMap { $0.cell as? SearchCell }
+            .bind { (cell) in
+                cell.cancelDidFetchingGetUser()
+            }.disposed(by: disposeBag)
         
         reactor.state.map { $0.sections }
             .distinctUntilChanged()

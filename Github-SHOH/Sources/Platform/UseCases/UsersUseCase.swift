@@ -24,4 +24,5 @@ final class UsersUseCase: BaseProviderProtocol {
         .asObservable()
         .map { $0.model }
     }
+    
 }

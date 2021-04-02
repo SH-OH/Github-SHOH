@@ -15,11 +15,15 @@ final class SearchCell: UICollectionViewCell {
     }
     
     var disposeBag: DisposeBag = .init()
+    private var getUserDisposeBag: DisposeBag = .init()
     
     @IBOutlet private weak var avatarImageView: UIImageView!
     @IBOutlet private weak var loginLabel: UILabel!
     @IBOutlet private weak var numberOfReposLabel: UILabel!
     
+    func cancelDidFetchingGetUser() {
+        getUserDisposeBag = .init()
+    }
 }
 
 // MARK: - Binding
@@ -42,7 +46,7 @@ extension SearchCell: StoryboardView {
             .distinctUntilChanged()
             .map { Reactor.Action.didFetchGetUser($0) }
             .bind(to: reactor.action)
-            .disposed(by: disposeBag)
+            .disposed(by: getUserDisposeBag)
         
         reactor.state.map { $0.numberOfRepos }
             .distinctUntilChanged()

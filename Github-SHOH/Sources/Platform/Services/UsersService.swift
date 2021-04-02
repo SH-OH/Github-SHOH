@@ -34,6 +34,10 @@ extension UsersService: BaseService, TargetType {
             return .requestPlain
         }
     }
+    
+    var sampleData: Data {
+        return Self.getSampleData("GetUser")
+    }
 }
 
 extension UsersService: CachePolicyGettableType {

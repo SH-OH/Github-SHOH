@@ -8,11 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		44633DCAF17C756970CA38A0 /* Pods_Github_SHOH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 093FC0F304020229BF961939 /* Pods_Github_SHOH.framework */; };
+		CB29888226171E7A0001AEDE /* SearchUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB29888126171E7A0001AEDE /* SearchUseCaseTests.swift */; };
+		CB2988A4261723700001AEDE /* SearchUsers_1.json in Resources */ = {isa = PBXBuildFile; fileRef = CB29888E26171F030001AEDE /* SearchUsers_1.json */; };
+		CB2988A5261723700001AEDE /* GetUser.json in Resources */ = {isa = PBXBuildFile; fileRef = CB2988962617201D0001AEDE /* GetUser.json */; };
+		CB2988AF261723DC0001AEDE /* UsersUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2988AE261723DC0001AEDE /* UsersUseCaseTests.swift */; };
+		CB2988BA261724C90001AEDE /* SearchViewReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2988B9261724C90001AEDE /* SearchViewReactorTests.swift */; };
+		CB2988CA261728ED0001AEDE /* SearchUsers_2.json in Resources */ = {isa = PBXBuildFile; fileRef = CB2988C9261728ED0001AEDE /* SearchUsers_2.json */; };
+		CB2988D226172AB70001AEDE /* SearchCellReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2988D126172AB70001AEDE /* SearchCellReactorTests.swift */; };
 		CB56A9862615B4B000CDB6DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB56A9852615B4B000CDB6DE /* AppDelegate.swift */; };
 		CB56A9882615B4B000CDB6DE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB56A9872615B4B000CDB6DE /* SceneDelegate.swift */; };
 		CB56A98F2615B4B300CDB6DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB56A98E2615B4B300CDB6DE /* Assets.xcassets */; };
 		CB56A9922615B4B300CDB6DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB56A9902615B4B300CDB6DE /* LaunchScreen.storyboard */; };
-		CB56A99D2615B4B300CDB6DE /* Github_SHOHTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB56A99C2615B4B300CDB6DE /* Github_SHOHTests.swift */; };
 		CB56A9A82615B4B300CDB6DE /* Github_SHOHUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB56A9A72615B4B300CDB6DE /* Github_SHOHUITests.swift */; };
 		CB6CADD2261604AB009A8B24 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6CADD1261604AB009A8B24 /* AppCoordinator.swift */; };
 		CB6CADDC261604D8009A8B24 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6CADDB261604D8009A8B24 /* Coordinator.swift */; };
@@ -68,6 +74,13 @@
 		8DBFAE4D94E73534DAA34359 /* Pods_Github_SHOHTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Github_SHOHTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D022A96213D492AD712EE6D /* Pods-Github-SHOH.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Github-SHOH.release.xcconfig"; path = "Target Support Files/Pods-Github-SHOH/Pods-Github-SHOH.release.xcconfig"; sourceTree = "<group>"; };
 		AD09A50E5976DDD423DB72D3 /* Pods-Github-SHOHTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Github-SHOHTests.release.xcconfig"; path = "Target Support Files/Pods-Github-SHOHTests/Pods-Github-SHOHTests.release.xcconfig"; sourceTree = "<group>"; };
+		CB29888126171E7A0001AEDE /* SearchUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUseCaseTests.swift; sourceTree = "<group>"; };
+		CB29888E26171F030001AEDE /* SearchUsers_1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SearchUsers_1.json; sourceTree = "<group>"; };
+		CB2988962617201D0001AEDE /* GetUser.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GetUser.json; sourceTree = "<group>"; };
+		CB2988AE261723DC0001AEDE /* UsersUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersUseCaseTests.swift; sourceTree = "<group>"; };
+		CB2988B9261724C90001AEDE /* SearchViewReactorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewReactorTests.swift; sourceTree = "<group>"; };
+		CB2988C9261728ED0001AEDE /* SearchUsers_2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SearchUsers_2.json; sourceTree = "<group>"; };
+		CB2988D126172AB70001AEDE /* SearchCellReactorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCellReactorTests.swift; sourceTree = "<group>"; };
 		CB56A9822615B4B000CDB6DE /* Github-SHOH.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Github-SHOH.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB56A9852615B4B000CDB6DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB56A9872615B4B000CDB6DE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,7 +88,6 @@
 		CB56A9912615B4B300CDB6DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CB56A9932615B4B300CDB6DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB56A9982615B4B300CDB6DE /* Github-SHOHTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Github-SHOHTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CB56A99C2615B4B300CDB6DE /* Github_SHOHTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Github_SHOHTests.swift; sourceTree = "<group>"; };
 		CB56A99E2615B4B300CDB6DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB56A9A32615B4B300CDB6DE /* Github-SHOHUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Github-SHOHUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB56A9A72615B4B300CDB6DE /* Github_SHOHUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Github_SHOHUITests.swift; sourceTree = "<group>"; };
@@ -162,6 +174,34 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CB29887F26171E570001AEDE /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				CB2988D126172AB70001AEDE /* SearchCellReactorTests.swift */,
+				CB2988B9261724C90001AEDE /* SearchViewReactorTests.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		CB29888D26171EEF0001AEDE /* Sample */ = {
+			isa = PBXGroup;
+			children = (
+				CB2988962617201D0001AEDE /* GetUser.json */,
+				CB29888E26171F030001AEDE /* SearchUsers_1.json */,
+				CB2988C9261728ED0001AEDE /* SearchUsers_2.json */,
+			);
+			path = Sample;
+			sourceTree = "<group>";
+		};
+		CB2988AC261723B40001AEDE /* UserCases */ = {
+			isa = PBXGroup;
+			children = (
+				CB29888126171E7A0001AEDE /* SearchUseCaseTests.swift */,
+				CB2988AE261723DC0001AEDE /* UsersUseCaseTests.swift */,
+			);
+			path = UserCases;
+			sourceTree = "<group>";
+		};
 		CB56A9792615B4B000CDB6DE = {
 			isa = PBXGroup;
 			children = (
@@ -197,8 +237,9 @@
 		CB56A99B2615B4B300CDB6DE /* Github-SHOHTests */ = {
 			isa = PBXGroup;
 			children = (
-				CB56A99C2615B4B300CDB6DE /* Github_SHOHTests.swift */,
 				CB56A99E2615B4B300CDB6DE /* Info.plist */,
+				CB29887F26171E570001AEDE /* Search */,
+				CB2988AC261723B40001AEDE /* UserCases */,
 			);
 			path = "Github-SHOHTests";
 			sourceTree = "<group>";
@@ -227,6 +268,7 @@
 			children = (
 				CB56A98E2615B4B300CDB6DE /* Assets.xcassets */,
 				CB56A9902615B4B300CDB6DE /* LaunchScreen.storyboard */,
+				CB29888D26171EEF0001AEDE /* Sample */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -481,8 +523,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB2988A4261723700001AEDE /* SearchUsers_1.json in Resources */,
 				CB56A9922615B4B300CDB6DE /* LaunchScreen.storyboard in Resources */,
 				CB56A98F2615B4B300CDB6DE /* Assets.xcassets in Resources */,
+				CB2988CA261728ED0001AEDE /* SearchUsers_2.json in Resources */,
+				CB2988A5261723700001AEDE /* GetUser.json in Resources */,
 				CB6CAE11261608CA009A8B24 /* SearchViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -660,7 +705,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB56A99D2615B4B300CDB6DE /* Github_SHOHTests.swift in Sources */,
+				CB2988D226172AB70001AEDE /* SearchCellReactorTests.swift in Sources */,
+				CB2988AF261723DC0001AEDE /* UsersUseCaseTests.swift in Sources */,
+				CB29888226171E7A0001AEDE /* SearchUseCaseTests.swift in Sources */,
+				CB2988BA261724C90001AEDE /* SearchViewReactorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
