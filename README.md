@@ -2,4 +2,6 @@
 
 ## Installation
 
-1. pod install
+```sh
+pod install
+```
