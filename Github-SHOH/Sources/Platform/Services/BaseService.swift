@@ -14,7 +14,7 @@ extension BaseService {
         return "https://api.github.com"
     }
     private static var GITHUB_API_TOKEN: String {
-        return "4461b39a20d12b5ea465775600313a7b9eed9f27"
+        return "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"
     }
 }
 
