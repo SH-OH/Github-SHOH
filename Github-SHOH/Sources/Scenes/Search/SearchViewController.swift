@@ -43,6 +43,9 @@ extension SearchViewController: StoryboardView {
     }
     
     private func bindCV(_ reactor: SearchViewReactor) {
+        collectionView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
+        
         collectionView.rx.willDisplayCell
             .map { $0.at }
             .distinctUntilChanged()
@@ -84,5 +87,20 @@ extension SearchViewController {
                 return cell
             }
         }
+    }
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension SearchViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
+        return CGSize(
+            width: collectionView.bounds.width,
+            height: 80
+        )
     }
 }
